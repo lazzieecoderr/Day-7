@@ -1,0 +1,276 @@
+Contents:-
+need of setters/getters
+Map, Reduce,  Filter
+Other array methods practiced in the session
+
+//!class example
+/*class Movie{
+   constructor(title,studio,rating="PG"){
+     this.title = title;
+     this.studio = studio;
+     this.rating = rating;
+   } 
+}
+const obj = new Movie("Casino Royale","Eon Productions","PG13")
+const obj1 = new Movie("Casino","Eon")
+console.log(obj.title,obj.studio,obj.rating);
+console.log(obj1.title,obj1.studio,obj1.rating);
+*/
+//class with methods
+class Car{
+    drive(){
+       console.log("driving the car");  
+    }
+    brake(){
+     console.log("applying the brake");
+    }
+}
+const car1 = new Car();
+car1.drive();
+car1.brake();
+
+//setters and getters
+get => get user data
+==> binds an object property to a function when the property is accepted
+set => set user data
+=> binds an object property to a function when the property is assigned with the value.
+
+example:- 
+//!class example with setters and getters
+/*class Users {
+    constructor(name="test"){
+     this.name=name  //test
+    }
+    set user(n){
+      this.name=n   // this.name = rupan
+    }
+    get user(){
+      return this.name   //rupan
+    }
+}
+const obj = new Users();
+console.log(obj.user);
+*/
+/*
+const a = {
+  set name(n) {   //n= john
+    console.log("setting a name" + " " + n); //setting a name John
+    this._name = n;   // name = john
+  },
+  get name() {
+    console.log("getting the name");  //getting a name
+    return this._name;   //john
+  },
+};
+a.name = "John";
+console.log(a.name);
+*/
+/*class Car{
+    constructor(power=50){
+        this.pow = power     //50
+    }
+    set power(n){
+        return `${this.pow=n}` //400
+    }
+    get power(){
+        return `${this.pow}hp`  //400hp
+    }
+}
+var car1 = new Car(400)
+console.log(car1.power);
+*/
+//!circle task
+/*class Circle{
+    constructor(radius,color){
+        this.radius=radius;
+        this.color = color;
+    }
+    get Radius(){
+        return this.radius
+    }
+    set Radius(n){
+        this.radius = n;
+    }
+    get Color(){
+        return this.color;
+    }
+    set Color(c){
+        this.color = c
+    }
+    get toString(){
+        return `"Circle[radius= ${this.radius} ,color = ${this.color}]"`
+    }
+    get area(){
+        return Math.PI*Math.pow(this.radius,2)
+    }
+    get circumference(){
+        return 2*Math.PI*this.radius
+    }
+}
+let obj = new Circle(1.0,"red") 
+console.log(obj.Color);
+console.log(obj.Radius);
+console.log(obj.toString);
+console.log(obj.area);
+console.log(obj.circumference);
+obj.Radius=3.5
+console.log(obj.Radius);
+obj.Color="green"
+console.log(obj.Color);
+*/
+------------------------------
+Map,Reduce,Filter (MRF)
+=> HOF (Higher Order Functions) / Callback function
+
+1.Map :- It iterates/transforms over each and every element in an array and produces a new array.
+syntax:- arrayname.map(we need to pass a function)
+
+//example without map
+const arr = [12,13,14,15]
+steps:- 
+ 1 .for loop
+ 2. multiply element by 2
+ 3. create a new array and push into it
+ 4. print new array.
+
+//!example without map
+/*const a = [12,13,14,15]
+const r = []
+for(var i=0;i<a.length;i++){
+   r.push(a[i]*2)
+}
+console.log(r);
+*/
+
+//with map 
+=> It takes function as a parameter and apply on each and every element in an array
+=> it returns new array
+=> It will be using arrow function maximum (because of memory and time consumption)
+=> it is an array method
+=> var res = arr.map(()=>{})
+=> parameter can be userdefined (ele,element,i,a...)
+=> when there is only one line in function there is no need of return
+
+//!example using map with normal function
+/*const arr = [12,13,14,15]
+function double(ele){
+    return ele*2
+}
+const result = arr.map(double)
+console.log(result);
+*/
+//!second method
+/*const arr = [12,13,14,15]
+const result = arr.map(function(ele){
+    return ele*2
+})
+console.log(result);
+*/
+//!third method
+/*const arr = [12,13,14,15]
+const result = arr.map((ele)=>{
+    return ele*2
+})
+console.log(result);
+*/
+//!fourth method
+/*const arr = [12,13,14,15]
+const result = arr.map((ele)=>ele*2)
+console.log(result);
+*/
+const a = ["apple","mangoe","orange"]   // apples,mangoes,oranges
+const result = a.map((ele)=>ele+"s")
+console.log(result);
+----------------------------------
+Filter:-
+=> It is basically used to filter
+=> used to filter the elements inside the array
+=> filter is based on condition
+=> It takes function as a parameter and apply on each and every element in an array
+=> It returns new array
+=>If the condition is true , it will push the element to array else it will be rejected
+syntax:- 
+arrayname.filter(function)
+
+//example without filter
+const arr = [12,13,14,15]
+steps:- 
+ 1 .for loop
+ 2. if condition for even number
+ 3. create a new array and push into it
+ 4. print new array.
+
+//!example without filter
+/*const a = [12,13,14,15]
+const r = []
+for(var i=0;i<a.length;i++){
+   if(a[i]%2===0){
+    r.push(a[i])
+   }
+}
+console.log(r);
+*/
+//!with filter
+const arr =[12,13,14,15]
+const result = arr.filter((ele)=>ele%2===0)
+console.log(result);
+
+ const greatest = [4,3,2,1,5]  // [3,4,5]
+ const r = greatest.filter((ele)=>ele>2)
+ console.log(r);
+
+Reduce :- (Confusing topic because it is not similar to the name)
+=> It is generally used when we have to take all the array elements and print the
+single value. Example:- greatest number ,sum of an array,....(total,summation)
+=> It is an array method
+=> syntax:- 
+arrayname.reduce((acc,cv)=>{
+
+},acc)
+acc=> accumulator is the initial value
+=> if initial value is not given it takes the first value
+cv = > current value is the current element/value
+//!example without reduce
+/*const arr = [1,2,3,4,5]
+let sum = 0;
+for(var i=0;i<arr.length;i++){
+    sum = sum+arr[i]
+}
+console.log(sum);
+*/
+//!using reduce
+/*const a = [1,2,3,4,5]
+const result = a.reduce((sum,i)=>{
+   return sum+i
+},0)
+console.log(result);
+*/
+const a = [1,2,3,4,5]
+const result = a.reduce((sum,i)=>{
+   return sum*i
+},)
+console.log(result);
+
+--------------------------------
+For-Each 
+=> to print the array elements
+=>It is apllicable only for arrays
+=> It takes function as a parameter
+=>It will apply on each and every element
+=> It is generally used for printing
+=>It returns undefined
+var arr = [1,2,3,4,5]
+ arr.forEach((ele)=>console.log(ele));
+ -----------------------------------------
+//Get all the countries from Asia continent /region using Filter function
+const request = new XMLHttpRequest();
+request.open("GET","https://restcountries.com/v3.1/all",true)
+request.send();
+request.onload=function(){
+    var data = request.response;
+    var result = JSON.parse(data)
+    //console.log(result);
+    var res = result.filter((ele)=>ele.region==="Asia")
+     var final = res.forEach((ele)=>console.log(ele.name.common))
+
+}
